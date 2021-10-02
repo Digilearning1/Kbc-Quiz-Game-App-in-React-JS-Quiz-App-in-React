@@ -1,38 +1,351 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Righteous&family=Roboto:wght@500;700;900&display=swap");
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;  
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: "Roboto", sans-serif;
+}
+.app_container {
+  height: 100vh;
+  display: flex;
+  color: white;
+  background-color: #061161;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.main {
+  width: 75%;  
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #020230),
+    url("../src/assets/image05.png") center;  
+  display: flex;
+  flex-direction: column;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.price_list {
+  width: 25%;
+  background-color: #020230;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.moneyList {
+  padding: 20px;
+  list-style: none;
+  width: 100%;
+}
+
+.moneyListItem {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.moneyListItem.active {
+  background-color: #ffa800;
+  color: black;
+}
+
+.moneyListItemNumber {
+  width: 30%;
+  font-size: 25px;
+  font-weight: 100;
+  text-align: right;
+  margin-right: 60px;
+}
+
+.moneyListItemAmount {
+  font-size: 25px;
+  font-weight: 300;
+}
+
+.top {
+  height: 50%;
+  position: relative;
+  margin: 0px auto;
+}
+
+.timer {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid #ffa800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: -65px;
+  left: -56px;
+  font-size: 35px;
+  font-weight: 700;
+  padding: 5px;
+  background: linear-gradient(black, #100241);
+}
+
+.bottom {
+  height: 50%;
+}
+
+.quiz {
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
+}
+
+.question {
+  width: 80%;
+  background: linear-gradient(#100241, black);
+  text-align: center;
+  padding: 20px;
+  border-radius: 35px;
+  border: 2px solid #ffa800;
+  font-size: 30px;
+  z-index: 10;
+}
+
+.answers {
+  width: 100%;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  flex-wrap: wrap;
+}
+
+.answer {
+  width: 40%;
+  padding: 10px;
+  margin: 0 10px 20px 10px;
+  text-align: center;
+  background: linear-gradient(#0e0124, #061161);
+  border: 1px solid #ffa800;
+  border-radius: 25px;
+  font-weight: 300;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.answer:hover,
+.answer.active {
+  background: #2900e0;
+}
+
+.answer.correct {
+  animation: correct 3s ease forwards;
+}
+
+@keyframes correct {
+ 0%,
+  22%,
+  42% {
+    background: #2900e0;
+  }
+  20%,
+  40%,
+  60% {
+    background: linear-gradient(#0e0124, #061161);
+  }
+  62%,
+  100% {
+    background: #438a19;
+  }
+}
+
+.answer.wrong {
+  animation: wrong 3s ease forwards;
+}
+
+@keyframes wrong {
+  0%,
+  22%,
+  42% {
+    background: #2900e0;
+  }
+  20%,
+  40%,
+  60% {
+    background: linear-gradient(#0e0124, #061161);
+  }
+  62%,
+  100% {
+    background: #da2100;
+  }
+}
+
+.earned {
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 80%;
+  text-align: center;
+  font-size: 35px;
+  background: linear-gradient(
+    90deg,
+    #061161 0%,
+    #000000 50%,
+    #061161 100%
+  );
+  padding: 20px 0px;
+  border: 2px solid #ffa800;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.winner {
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 65%;
+  height: 29%;
+  text-align: center;
+  font-size: 35px;
+  background: linear-gradient( 
+90deg, #061161 0%, #000000 50%, #061161 100% );
+  padding: 20px 10px;
+  border-radius: 50%;
+  border: 5px solid #ffa800;
+  font-weight: bold;
+}
+.earned-title {
+  font-size: 50px;
+  margin: 25px 0 20px 0;
+}
+
+.earned_money {
+  color:#ffa800;
+  font-size:50px;
+  vertical-align: middle;
+}
+
+.start {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.startInput {
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 22px;
+  padding: 10px 0px;
+  margin-bottom: 40px;
+  text-transform: capitalize;
+}
+
+.startInput:focus {
+  outline: none;
+}
+
+.startButton {
+  width: 100%;
+  height: 60px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 30px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(black, #100241);
+  border: 1px solid #ffa800;
+  box-shadow: 5px 5px 5px black;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.lifelines {
+  padding: 10px 0px 0px 0px;
+  margin-bottom: 0px;
+  width: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: space-evenly;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.lifeline {
+  position: relative;
+  width: 15%;
+  border: 2px solid #ffa800;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  padding: 10px;
+}
+
+.lifeline img {
+  width: 90%;
+}
+
+span.option {
+  color: #ffa800;
+}
+.kbc_game {
+  margin: 25px 0;
+  text-align: center;
+  font-size: 50px;
+  font-family: 'Righteous', cursive;
+  letter-spacing: 5px;
+}
+
+@media only screen and (max-width: 1920px) {
+  .moneyListItemNumber {
+    font-size: 19px;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .moneyListItemAmount {
+    font-size: 19px;
+    font-weight: 300;
   }
+  
+  .earned-title {
+    font-size: 35px;
+    margin: 8px 0 15px 0;
+  }
+  
+  .earned_money {
+    font-size:35px;
+  }
+  .kbc_game {
+    font-size: 35px;
+  }
+  .timer {
+    bottom: -42px;
+  }
+  .question {
+    font-size: 25px;
+  }
+  .answer {
+    font-size: 25px;
+  }
+  .lifeline {
+    padding: 4px;
+}
+.moneyListItem {
+  padding: 5px;
+}
+.winner {
+  padding: 30px 10px;
+}
 }
